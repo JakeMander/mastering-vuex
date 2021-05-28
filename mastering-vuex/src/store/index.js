@@ -1,24 +1,69 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
+import EventService from '@/services/EventService.js'
 
 export default createStore({
   state: {
     user: { id: 'abc123', name: 'Jake Mander' },
     categories: ['sustainability', 'education', 'food', 'community'],
-    todos: [
-      { id: 1, text: 'Clean The Dishes', done: false },
-      { id: 2, text: 'Walk The Pooch', done: false },
-      { id: 3, text: 'Study Time', done: true },
-      { id: 4, text: 'Empty The Bins', done: false }
-    ],
-    events: [
-      { id: 1, title: 'Beach Clean Up', organiser: 'David Hasslehof'},
-      { id: 2, title: 'Cat Adoption', organiser: 'The Crazy Cat Lady'},
-      { id: 3, title: 'Charity Fun Run', organiser: 'Bobby Big Stride'},
-      { id: 4, title: 'Chairty Bingo', organiser: 'Dorris Eiezdown'}
-    ]
+    event: {},
+    events:  [],
+    totalEventsInDatabase: null
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    ADD_EVENT(state, event) {
+      state.events.push(event) ; 
+    },
+    SET_EVENTS(state, events) {
+      state.events = events;
+    },
+    SET_EVENT(state, event) {
+      console.log("SET");
+      state.event = event;
+      console.log(typeof(event.id));
+    },
+    SET_TOTAL_EVENTS(state, totalEvents) {
+      state.totalEventsInDatabase = totalEvents;
+    }
+  },
+  actions: {
+    createEvent({ commit }, event) {
+      return EventService.postEvent(event).then(() => {
+        commit('ADD_EVENT');
+      });
+    },
+    fetchEvents({ commit }, {perPage, page}) {
+      EventService.getEvents(perPage, page)
+      .then(response => {
+        commit('SET_EVENTS', response.data);
+        console.log(response.data);
+        commit('SET_TOTAL_EVENTS', response.headers['x-total-count']);
+      })
+      .catch(error => {
+        console.error(error.response);
+      })
+    },
+    
+    fetchEvent({ commit, getters }, eventID ) {
+      console.log("FETCH)")
+      console.log(typeof(eventID));
+      var event = getters.getEventByID(eventID);
+      if(event) {
+        commit('SET_EVENT', event);
+        console.log("No API Call!");
+      } 
+      
+      else {
+        EventService.getEvent(eventID)
+        .then(response => {
+          console.log(response.data)
+          commit('SET_EVENT', response.data);
+        })
+        .catch(error => {
+          console.log('There was an error getting the event', error.response);
+        })
+      }
+    }
+  },
   getters: {
     categoriesLength: state => {
       return state.categories.length
@@ -31,7 +76,12 @@ export default createStore({
     },
 
     getEventByID: state => id => {
-      return state.events.find(event => event.id === id);
+      var result = state.events.find(event => event.id === id);
+      return result;
+    },
+    isLastPage: state => pageNumber => {
+      let result = state.totalEventsInDatabase > pageNumber * 3;
+      return result;
     }
   },
   modules: {},

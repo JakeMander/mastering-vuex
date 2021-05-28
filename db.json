@@ -29,6 +29,60 @@
       "date": "July 22, 2022",
       "time": "11:00",
       "organizer": "Carey Wales"
+    },
+    {
+      "id": 3735272,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "food",
+      "organizer": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "title": "Charity Cooking Festival",
+      "description": "FOOOOOOD!",
+      "location": "Burton",
+      "date": "2021-05-19T23:00:00.000Z",
+      "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 5820342,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "title": "Learning Is Fun!",
+      "description": "It's Fun!",
+      "location": "Burton",
+      "date": "2021-05-19T23:00:00.000Z",
+      "time": "19:00",
+      "attendees": []
+    },
+    {
+      "id": 129605,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "education",
+      "organizer": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "title": "Test",
+      "description": "Test",
+      "location": "Test",
+      "date": "2021-05-12T23:00:00.000Z",
+      "time": "10:00",
+      "attendees": []
     }
   ]
 }

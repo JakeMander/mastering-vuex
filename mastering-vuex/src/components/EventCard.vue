@@ -1,7 +1,7 @@
 <template>
   <router-link class="event-link" :to="{name : 'EventDetail', params: {id: event.id} }">
     <div class="event-card">
-      <span>@{{ event.time }} on {{ event.date }} </span>
+      <span>@{{ event.time }} on {{ formattedEventDate }} </span>
       <h1>{{ event.title }}</h1>
     </div>
   </router-link>
@@ -13,6 +13,12 @@ export default {
     event: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    formattedEventDate() {
+      let date = new Date(this.event.date);
+      return date.toDateString();
     }
   }
 };
