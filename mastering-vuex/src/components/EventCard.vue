@@ -17,6 +17,8 @@ export default {
   },
   computed: {
     formattedEventDate() {
+      console.log("Card Check");
+      console.log(this.event.id)
       let date = new Date(this.event.date);
       return date.toDateString();
     }
