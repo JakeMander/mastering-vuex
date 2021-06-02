@@ -75,9 +75,7 @@ export default {
         })
         this.event = this.createFreshEventObject();
       })
-      .catch((errorMsg) => {
-        console.error(`There Was An Error With The Form Submission ${errorMsg}`);
-      });
+      .catch(() => {});
     },
     createFreshEventObject() {
       const user = this.$store.state.user.user;

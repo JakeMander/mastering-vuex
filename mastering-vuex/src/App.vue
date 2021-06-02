@@ -10,9 +10,19 @@
         <router-link :to="{ name: 'EventCreate' }">Create</router-link>
       </div>
     </div>
+    <NotificationContainer/>
     <router-view :key="$route.fullPath"/>
   </div>
 </template>
+<script>
+  import NotificationContainer from '@/components/NotificationContainer.vue'
+
+  export default {
+    components: {
+      NotificationContainer
+    }
+  }
+</script>
 
 <style>
 #app {
@@ -144,6 +154,9 @@ small {
 }
 .-text-error {
   color: tomato;
+}
+.-text-success {
+  color: #39b982;
 }
 .-text-gray {
   color: rgba(0, 0, 0, 0.5);

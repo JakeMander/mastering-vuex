@@ -473,6 +473,51 @@
       "date": "2021-06-23T23:00:00.000Z",
       "time": "22:00",
       "attendees": []
+    },
+    {
+      "id": 9063833,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "food",
+      "organizer": "Jake Mander",
+      "title": "Test",
+      "description": "Test",
+      "location": "Test",
+      "date": "2021-06-16T23:00:00.000Z",
+      "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 1349025,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "food",
+      "organizer": "Jake Mander",
+      "title": "TEST",
+      "description": "TEST",
+      "location": "BURTON",
+      "date": "2021-06-25T23:00:00.000Z",
+      "time": "21:00",
+      "attendees": []
+    },
+    {
+      "id": 2896778,
+      "user": {
+        "id": "abc123",
+        "name": "Jake Mander"
+      },
+      "category": "education",
+      "organizer": "Jake Mander",
+      "title": "TEST",
+      "description": "TEST",
+      "location": "TEST",
+      "date": "2021-06-16T23:00:00.000Z",
+      "time": "18:00",
+      "attendees": []
     }
   ]
 }
